@@ -1,10 +1,10 @@
 {
-  "name": "heroku-button-test",
-  "description": "Master repo for heroku-button-test",
+  "name": "1pass-offline",
+  "description": "Sync 1Password files to PouchDB/Cloudant",
   "version": "0.0.1",
   "repository": {
     "type": "git",
-    "url": "git@github.com:jimpick/heroku-button-test.git"
+    "url": "git@github.com:backblend/1pass-offline.git"
   },
   "engines": {
     "node": "0.10.28"

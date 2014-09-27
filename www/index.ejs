@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<title>Heroku Button Test</title>
+<body>
+<h1>Heroku Button Test <%= config.canonicalUrl %></h1>
+
+<div id="views" class="wrap blue">
+  <div class="headerRegion"></div>
+  <div class="content"></div>
+  <div class="footerRegion"></div>
+</div>
+<div class="modalContainer modalWrapper"></div>
+
+<script>
+globalOpts = {
+  canonicalUrl: "<%= config.canonicalUrl %>"
+, pushState: true
+}
+</script>
+<script data-main="<%= staticBase %>/config" src="<%= staticBase %>/vendor/jam/require.js"></script>
+</body>
+</html>

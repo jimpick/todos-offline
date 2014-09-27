@@ -1,6 +1,10 @@
 Heroku Button Test
 ==================
 
+Deploy this to Heroku:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 Development Notes:
 
 * Install Node.js

@@ -27,6 +27,7 @@
     }
   },
   "dependencies": {
+    "co": "^3.1.0",
     "koa": "^0.12.1",
     "koa-static-cache": "^1.2.0",
     "thunkify": "^2.1.2",

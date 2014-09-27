@@ -27,6 +27,7 @@
     }
   },
   "dependencies": {
+    "cloudant": "^1.0.0-beta3",
     "co": "^3.1.0",
     "koa": "^0.12.1",
     "koa-static-cache": "^1.2.0",

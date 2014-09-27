@@ -10,6 +10,7 @@ var path = require('path')
   , read = thunkify(fs.readFile)
   , wwwDir = path.join(__dirname, '../www')
   , staticDir = path.join(wwwDir, 'static')
+  , config = require('./config')
 
 function setupStatic() {
   app.use(staticCache(staticDir, {

@@ -3,6 +3,9 @@
 module.exports = {
   devMode: true
 , canonicalUrl: 'localhost:4126'
+, cloudant: {
+    username: ''
+  , password: ''
+  }
 }
 
-exports.config = module.exports

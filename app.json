@@ -1,11 +1,24 @@
 {
-  "name": "Heroku Button Test",
-  "description": "Just testing how to make a Heroku Button",
+  "name": "1pass-offline",
+  "description": "Sync 1Password files using PouchDB to Cloudant",
   "keywords": [
     "small",
     "sharp",
     "tool"
   ],
   "addons": [],
-  "env": {}
+  "env": {
+    "CLOUDANT_USERNAME": {
+      "description": "Username",
+      "value": ""
+    },
+    "CLOUDANT_PASSWORD": {
+      "description": "Password",
+      "value": ""
+    },
+    "CLOUDANT_DB": {
+      "description": "Database Name (will be created)"
+      "value": ""
+    }
+  }
 }

@@ -1,11 +1,14 @@
-Heroku Button Test
-==================
+1pass-offline
+=============
 
-Deploy this to Heroku:
+Syncs 1Password Agile Keychain files to a local PouchDB inside the
+web-browser, and also syncs to a shared CouchDB hosted on Cloudant.
+
+# Deploy this to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-Development Notes:
+# Development Notes
 
 * Install Node.js
 

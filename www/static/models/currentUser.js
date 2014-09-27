@@ -1,9 +1,7 @@
 define([
   "backbone"
-, "parse"
 ], function(
   Backbone
-, Parse
 ) {
 
   var CurrentUser = Backbone.Model.extend({
@@ -17,6 +15,9 @@ define([
   , logout: function() {
       // FIXME
       this.analyticsIdentify()
+    }
+  , analyticsIdentify: function() {
+      // FIXME
     }
   })
 

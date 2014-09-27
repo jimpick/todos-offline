@@ -10,27 +10,29 @@ web-browser, and also syncs to a shared CouchDB hosted on Cloudant.
 
 # Development Notes
 
-* Install Node.js
+This project is using Koa and ES6 generators, which will be in the next
+stable version of Node.js.
 
-  http://nodejs.org/
+* Install Node.js v0.11.13
+
+    http://nodejs.org/dist/v0.11.13/
+
+* Ensure the correct version of node is in your PATH
+
+    node -v
+    v0.11.13
 
 * Install npm modules
 
     npm install
 
-* Install grunt
-
-    npm install -g grunt-cli
-
-  (You may need to use sudo)
-
 * Setup config.js
 
     cp config.js.example config.js
 
-* Run grunt
+* Run grunt (via npm, so --harmony flag is passed, see: http://stackoverflow.com/questions/17748806/how-to-add-harmony-node-flag-to-grunt-express )
 
-    grunt
+    npm start
 
   This will start a local web server.
 

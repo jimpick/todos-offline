@@ -37,7 +37,7 @@ define([
       e.stopPropagation() // FIXME: Remove form tag
       e.preventDefault()
 
-      Parse.User.logIn(
+      /* Parse.User.logIn(
         username
       , password
       , {
@@ -55,6 +55,7 @@ define([
       )
 
       this.$(".login-form button").attr("disabled", "disabled")
+      */
 
       return false
     }

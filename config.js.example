@@ -1,0 +1,8 @@
+// Configuration settings
+
+module.exports = {
+  devMode: true
+, canonicalUrl: 'localhost:4126'
+}
+
+exports.config = module.exports

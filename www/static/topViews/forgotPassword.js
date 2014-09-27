@@ -36,6 +36,7 @@ define([
       e.stopPropagation() // FIXME: Remove form tag
       e.preventDefault()
 
+      /*
       Parse.User.requestPasswordReset(
         email
       , {
@@ -53,6 +54,7 @@ define([
       )
 
       this.$(".forgot-password-form button").attr("disabled", "disabled")
+      */
 
       return false
     }

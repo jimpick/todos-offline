@@ -37,6 +37,7 @@ define([
       e.stopPropagation() // FIXME: Remove form tag
       e.preventDefault()
 
+      /*
       var user = new Parse.User()
       user.set('username', username)
       user.set('email', username)
@@ -56,6 +57,7 @@ define([
       )
 
       this.$(".signup-form button").attr("disabled", "disabled")
+      */
 
       return false
     }

@@ -1,29 +1,16 @@
-var path = require('path')
-  , http = require('http')
+var http = require('http')
   , co = require('co')
-  , staticCache = require('koa-static-cache')
-  , _ = require('underscore')
   , app = require('./app')
-  , wwwDir = path.join(__dirname, '../www')
-  , staticDir = path.join(wwwDir, 'static')
-
-function setupStatic() {
-  app.use(staticCache(staticDir, {
-    prefix: '/static/'
-  , maxAge: 365 * 24 * 60 * 60
-  }))
-}
 
 co(function *initialize() {
-
   var frontEnd = require('./middleware/frontEnd')
 
   // Things to do before handling requests
-  yield frontEnd.load()
+  yield frontEnd.load() // Loads the template from disk
 
-  // Setup request handling
-  setupStatic()
-  frontEnd.setup()
+  // Setup request handling -- order is important
+  require('./middleware/staticAssets') // Static Assets
+  frontEnd.setup() // Template renderer
 
   // Start listening
   var server = http.createServer(app.callback())
@@ -31,5 +18,4 @@ co(function *initialize() {
   server.listen(port)
   console.log('Listening on port ' + port)
 })()
-
 

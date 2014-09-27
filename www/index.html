@@ -2,7 +2,7 @@
 <html>
 <title>1pass-offline</title>
 <body>
-<h1>1pass-offline <%= config.canonicalUrl %></h1>
+<h1>1pass-offline</h1>
 
 <div id="views" class="wrap blue">
   <div class="headerRegion"></div>
@@ -13,8 +13,7 @@
 
 <script>
 globalOpts = {
-  canonicalUrl: "<%= config.canonicalUrl %>"
-, pushState: true
+  pushState: true
 }
 </script>
 <script data-main="<%= staticBase %>/config" src="<%= staticBase %>/vendor/jam/require.js"></script>

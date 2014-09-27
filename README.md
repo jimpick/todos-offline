@@ -36,4 +36,8 @@ stable version of Node.js.
 
   This will start a local web server.
 
+  Sometimes, it's helpful to just run the web server directly:
+
+    node --harmony server/server.js
+
 

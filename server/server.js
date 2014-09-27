@@ -1,16 +1,14 @@
 var path = require('path')
   , fs = require('fs')
   , http = require('http')
-  , koa = require('koa')
   , co = require('co')
   , thunkify = require('thunkify')
   , staticCache = require('koa-static-cache')
   , _ = require('underscore')
-  , app = koa()
+  , app = require('./app')
   , read = thunkify(fs.readFile)
   , wwwDir = path.join(__dirname, '../www')
   , staticDir = path.join(wwwDir, 'static')
-  , config = require('./config')
 
 function setupStatic() {
   app.use(staticCache(staticDir, {
@@ -21,10 +19,7 @@ function setupStatic() {
 
 function setupWelcome(template) {
   var compiledTemplate = _.template(template)({
-    config: {
-      canonicalUrl: 'localhost'
-    }
-  , staticBase: '/static'
+    staticBase: '/static'
   })
   app.use(function *welcome(next) {
     // FIXME if (this.request.path != '/') return yield next

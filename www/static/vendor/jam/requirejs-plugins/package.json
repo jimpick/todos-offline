@@ -1,0 +1,22 @@
+{
+    "name": "requirejs-plugins",
+    "version": "1.0.0",
+    "description": "Jam package for RequireJS plugins",
+    "jam": {
+        "include": [
+            "async.js",
+            "css.js",
+            "depend.js",
+            "font.js",
+            "goog.js",
+            "i18n.js",
+            "image.js",
+            "json.js",
+            "mdown.js",
+            "noext.js",
+            "normalize.js",
+            "propertyParser.js",
+            "text.js"
+        ]
+    }
+}

@@ -11,6 +11,7 @@ co(function *initialize() {
   // Setup request handling -- order is important
   require('./middleware/staticAssets') // Static Assets
   require('./middleware/passport') // Passport Authentication
+  require('./middleware/api') // API
   frontEnd.setup() // Template renderer
 
   // Start listening

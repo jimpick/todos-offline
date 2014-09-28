@@ -37,15 +37,14 @@ define([
       e.stopPropagation() // FIXME: Remove form tag
       e.preventDefault()
 
-      /* Parse.User.logIn(
+      currentUser.login(
         username
       , password
       , {
-          success: function(user) {
-            currentUser.updateParseUser(user)
+          success: function() {
             app.vent.trigger('go:home')
           }
-        , error: function(user, error) {
+        , error: function(error) {
             self.$(".login-form .error")
               .html("Invalid username or password. Please try again.")
               .show()
@@ -55,7 +54,6 @@ define([
       )
 
       this.$(".login-form button").attr("disabled", "disabled")
-      */
 
       return false
     }

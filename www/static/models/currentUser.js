@@ -6,17 +6,24 @@ define([
 
   var CurrentUser = Backbone.Model.extend({
     initialize: function() {
-      this.analyticsIdentify()
     }
   , isLoggedIn: function() {
       // FIXME
       return false
     }
-  , logout: function() {
-      // FIXME
-      this.analyticsIdentify()
+  , login: function(username, password, opts) {
+      $.post('/api/v1/login', {
+        username: username
+      , password: password
+      })
+      .done(function() {
+        opts.success()
+      })
+      .fail(function() {
+        opts.error()
+      })
     }
-  , analyticsIdentify: function() {
+  , logout: function() {
       // FIXME
     }
   })

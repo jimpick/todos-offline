@@ -14,13 +14,14 @@ function *load() {
 
 // Call this after load has finished
 function setup() {
-  var compiledTemplate = _.template(template)({
-    staticBase: '/static'
-  })
+  var compiledTemplate = _.template(template)
   app.use(function *welcome(next) {
     // FIXME if (this.request.path != '/') return yield next
     this.type = 'html'
-    this.body = compiledTemplate
+    this.body = compiledTemplate({
+      staticBase: '/static'
+    , isLoggedIn: this.isAuthenticated()
+    })
   })
 }
 

@@ -10,6 +10,7 @@ co(function *initialize() {
 
   // Setup request handling -- order is important
   require('./middleware/staticAssets') // Static Assets
+  require('./middleware/passport') // Passport Authentication
   frontEnd.setup() // Template renderer
 
   // Start listening

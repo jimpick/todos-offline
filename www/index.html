@@ -15,6 +15,7 @@
 globalOpts = {
   pushState: true
 , isLoggedIn: <%= isLoggedIn %>
+, user: <%= JSON.stringify(user) %>
 }
 </script>
 <script data-main="<%= staticBase %>/config" src="<%= staticBase %>/vendor/jam/require.js"></script>

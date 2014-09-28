@@ -19,5 +19,10 @@ api.post('/login', function *login(next) {
   }).call(this, next)
 })
 
+api.post('/logout', function *logout(next) {
+  this.logout()
+  ctx.body = { success: true }
+})
+
 app.use(mount('/api/v1', api.middleware()))
 

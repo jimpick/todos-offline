@@ -17,10 +17,16 @@ function setup() {
   var compiledTemplate = _.template(template)
   app.use(function *welcome(next) {
     // FIXME if (this.request.path != '/') return yield next
+    var user = {}
+    if (this.isAuthenticated()) {
+      user.email = this.req.user.email
+    }
+    console.log('Jim', this.request.path, this.isAuthenticated(), this.req.user)
     this.type = 'html'
     this.body = compiledTemplate({
       staticBase: '/static'
     , isLoggedIn: this.isAuthenticated()
+    , user: user
     })
   })
 }

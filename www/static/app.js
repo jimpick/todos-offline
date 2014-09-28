@@ -3,11 +3,13 @@ define([
 , "backbone"
 , "Backbone.Marionette"
 , "vendor/backblend/bypass"  // send links to router
+, "models/currentUser"
 ], function(
   $
 , Backbone
 , marionette
 , bypass
+, currentUser
 ) {
 
   var app = new Backbone.Marionette.Application()
@@ -33,6 +35,8 @@ define([
   }
 
   app.addInitializer(function(options) {
+    currentUser.set(globalOpts.user)
+    currentUser.set('loggedIn', globalOpts.isLoggedIn)
     Backbone.history.start({
       pushState: globalOpts.pushState
     , root: root

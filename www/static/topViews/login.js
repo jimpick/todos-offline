@@ -31,14 +31,14 @@ define([
 
   , login: function(e) {
       var self = this
-        , username = this.$("#login-username").val()
+        , email = this.$("#login-email").val()
         , password = this.$("#login-password").val()
 
       e.stopPropagation() // FIXME: Remove form tag
       e.preventDefault()
 
       currentUser.login(
-        username
+        email
       , password
       , {
           success: function() {
@@ -46,7 +46,7 @@ define([
           }
         , error: function(error) {
             self.$(".login-form .error")
-              .html("Invalid username or password. Please try again.")
+              .html("Invalid email or password. Please try again.")
               .show()
             self.$(".login-form button").removeAttr("disabled")
           }

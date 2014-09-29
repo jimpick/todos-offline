@@ -7,7 +7,7 @@ co(function *initialize() {
     , cloudant = require('./lib/cloudant')
 
   // Things to do before handling requests
-  yield cloudant.createDatabase()
+  yield cloudant.createDatabases()
   yield frontEnd.load() // Loads the template from disk
 
   // Setup request handling -- order is important

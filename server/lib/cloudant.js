@@ -12,9 +12,10 @@ function *listDatabases() {
   console.log('All databases: %s', allDbs.join(', '))    
 }
 
-function *createDatabase() {
+function *createDatabase(dbName) {
   try {
-    yield coCloudant.db.create(config.cloudant.db)
+    yield coCloudant.db.create(dbName)
+    console.log('Created cloudant db ' + dbName)
   } catch (e) {
     if (!e.status_code === 412) {
       throw e // If database already exists (status_code is 412), then
@@ -23,7 +24,12 @@ function *createDatabase() {
   }
 }
 
+function *createDatabases() {
+  yield createDatabase(config.cloudant.db)
+  yield createDatabase(config.cloudant.db + '/users')
+}
+
 module.exports = {
   listDatabases: listDatabases
-, createDatabase: createDatabase
+, createDatabases: createDatabases
 }

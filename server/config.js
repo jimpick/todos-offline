@@ -27,7 +27,7 @@ if (process.env.CLOUDANT_DB) {
   config.cloudant.db = process.env.CLOUDANT_DB
 }
 
-_.defaults(config.cloudant, {db: '1pass'})
+_.defaults(config.cloudant, {db: 'onepass'})
 
 // Validations
 

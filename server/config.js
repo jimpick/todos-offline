@@ -1,7 +1,7 @@
 var path = require('path')
-  , fs = require('fs')
-  , _ = require('underscore')
-  , configFile = path.join(__dirname, '../config.js')
+var fs = require('fs')
+var _ = require('underscore')
+var configFile = path.join(__dirname, '../config.js')
 
 // Read configuration from config.js file at top level first (for devs)
 // and then from environment variables (for Heroku deploy)

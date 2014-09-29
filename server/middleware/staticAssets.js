@@ -1,7 +1,7 @@
 var path = require('path')
-  , staticCache = require('koa-static-cache')
-  , app = require('../app')
-  , staticDir = path.join(__dirname, '../../www/static')
+var staticCache = require('koa-static-cache')
+var app = require('../app')
+var staticDir = path.join(__dirname, '../../www/static')
 
 app.use(staticCache(staticDir, {
   prefix: '/static/'

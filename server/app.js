@@ -1,5 +1,5 @@
 var koa = require('koa')
-  , app = koa()
+var app = koa()
 
 module.exports = app
 

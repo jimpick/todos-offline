@@ -1,11 +1,11 @@
 var co = require('co')
-  , Cloudant = require('cloudant')
-  , config = require('../config')
-  , cloudant = Cloudant({
+var Cloudant = require('cloudant')
+var config = require('../config')
+var cloudant = Cloudant({
       account: config.cloudant.username
     , password: config.cloudant.password
     })
-  , coCloudant = require('./co-cloudant')(cloudant)
+var coCloudant = require('./co-cloudant')(cloudant)
 
 function *listDatabases() {
   var allDbs = (yield coCloudant.db.list())[0]

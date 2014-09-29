@@ -1,11 +1,11 @@
 var fs = require('fs')
-  , path = require('path')
-  , _ = require('underscore')
-  , thunkify = require('thunkify')
-  , read = thunkify(fs.readFile)
-  , app = require('../app')
-  , wwwDir = path.join(__dirname, '../../www')
-  , template
+var path = require('path')
+var _ = require('underscore')
+var thunkify = require('thunkify')
+var read = thunkify(fs.readFile)
+var app = require('../app')
+var wwwDir = path.join(__dirname, '../../www')
+var template
 
 // Read template from disk into memory
 function *load() {
@@ -16,12 +16,12 @@ function *load() {
 function setup() {
   var compiledTemplate = _.template(template)
   app.use(function *welcome(next) {
-    // FIXME if (this.request.path != '/') return yield next
+    // FIXME Use router and load routes from frontend
+    // if (this.request.path != '/') return yield next
     var user = {}
     if (this.isAuthenticated()) {
       user.email = this.req.user.email
     }
-    console.log('Jim', this.request.path, this.isAuthenticated(), this.req.user)
     this.type = 'html'
     this.body = compiledTemplate({
       staticBase: '/static'

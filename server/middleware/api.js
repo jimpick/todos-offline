@@ -1,7 +1,7 @@
 var Router = require('koa-router')
-  , mount = require('koa-mount')
-  , passport = require('koa-passport')
-  , app = require('../app')
+var mount = require('koa-mount')
+var passport = require('koa-passport')
+var app = require('../app')
 
 var api = new Router()
 

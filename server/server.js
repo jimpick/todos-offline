@@ -1,10 +1,10 @@
 var http = require('http')
-  , co = require('co')
-  , app = require('./app')
+var co = require('co')
+var app = require('./app')
 
 co(function *initialize() {
   var frontEnd = require('./middleware/frontEnd')
-    , cloudant = require('./lib/cloudant')
+  var cloudant = require('./lib/cloudant')
 
   // Things to do before handling requests
   yield cloudant.createDatabases()
@@ -18,7 +18,7 @@ co(function *initialize() {
 
   // Start listening
   var server = http.createServer(app.callback())
-    , port = process.env.PORT || 4126
+  var port = process.env.PORT || 4126
   server.listen(port)
   console.log('Listening on port ' + port)
 })()

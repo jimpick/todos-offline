@@ -2,6 +2,7 @@ var Router = require('koa-router')
 var mount = require('koa-mount')
 var passport = require('koa-passport')
 var app = require('../app')
+var models = require('../models')
 
 var api = new Router()
 
@@ -22,6 +23,12 @@ api.post('/login', function *login(next) {
 api.post('/logout', function *logout(next) {
   this.logout()
   ctx.body = { success: true }
+})
+
+api.post('/register', function *register(next) {
+  // FIXME: Validations
+  yield models.user.register(this.request.body)
+  this.body = { success: true }
 })
 
 app.use(mount('/api/v1', api.middleware()))

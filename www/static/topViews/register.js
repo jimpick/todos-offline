@@ -31,33 +31,29 @@ define([
 
   , signUp: function(e) {
       var self = this
-        , username = this.$("#signup-username").val()
+        , email = this.$("#signup-email").val()
         , password = this.$("#signup-password").val()
 
       e.stopPropagation() // FIXME: Remove form tag
       e.preventDefault()
 
-      /*
-      var user = new Parse.User()
-      user.set('username', username)
-      user.set('email', username)
-      user.set('password', password)
-      user.signUp(
-        null
+      currentUser.register(
+        email
+      , password
       , {
-          success: function(user) {
-            currentUser.updateParseUser(user)
+          success: function() {
             app.vent.trigger('go:home')
           }
-        , error: function(user, error) {
-            self.$(".signup-form .error").html(error.message).show()
+        , error: function(error) {
+            self.$(".signup-form .error")
+              .html("Invalid email or password. Please try again.")
+              .show()
             self.$(".signup-form button").removeAttr("disabled")
           }
         }
       )
 
       this.$(".signup-form button").attr("disabled", "disabled")
-      */
 
       return false
     }

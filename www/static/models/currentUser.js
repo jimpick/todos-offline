@@ -33,6 +33,22 @@ define([
                                // if the server logout fails, or it should
                                // trash the session
     }
+  , register: function(email, password, opts) {
+      var model = this
+      $.post('/api/v1/register', {
+        email: email
+      , password: password
+      })
+      .done(function() {
+        model.clear()
+        model.set('loggedIn', true)
+        model.set('email', email)
+        opts.success()
+      })
+      .fail(function() {
+        opts.error()
+      })
+    }
   })
 
   var currentUser = new CurrentUser()

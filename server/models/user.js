@@ -23,7 +23,12 @@ function *register(args) {
   var id = uuid.v4()
   var salt = yield genSalt(10)
   args.password = yield hash(args.password, salt)
-  yield cloudant.users().insert(args, id)
+  insertResult = yield cloudant.users().insert(args, id)
+  user = {
+    _id: id
+  , email: args.email
+  }
+  return user
 }
 
 function *findByEmail(email) {

@@ -2,8 +2,6 @@ var passport = require('koa-passport')
 var co = require('co')
 var models = require('../models')
 
-var user = { id: 1, email: 'test@example.com' }
-
 passport.serializeUser(function(user, done) {
   done(null, user._id)
 })

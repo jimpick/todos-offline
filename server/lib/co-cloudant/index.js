@@ -39,6 +39,8 @@ var db_methods = [
   'show',
   'atomic',
   'search',
+  'index',
+  'find',
   {
     name: 'attachment',
     methods: ['insert', 'get', 'destroy']

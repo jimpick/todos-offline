@@ -8,6 +8,7 @@ var api = new Router()
 
 api.post('/login', function *login(next) {
   var ctx = this
+  // FIXME: Copied from elsewhere - needs review
   yield* passport.authenticate('local', function*(err, user, info) {
     if (err) throw err
     if (user === false) {
@@ -27,7 +28,21 @@ api.post('/logout', function *logout(next) {
 
 api.post('/register', function *register(next) {
   // FIXME: Validations
-  yield models.user.register(this.request.body)
+  try {
+    yield models.user.register(this.request.body)
+  } catch(ex) {
+    if (ex.message === "Email already exists") {
+      console.log(ex.message)
+      this.status = 409
+      this.body = {
+        success: false
+      , message: ex.message
+      }
+      return
+    }
+    throw ex
+  }
+  this.status = 201
   this.body = { success: true }
 })
 

@@ -1,6 +1,7 @@
 var http = require('http')
 var co = require('co')
 var app = require('./app')
+var models = require('./models')
 
 co(function *initialize() {
   var frontEnd = require('./middleware/frontEnd')
@@ -8,6 +9,7 @@ co(function *initialize() {
 
   // Things to do before handling requests
   yield cloudant.createDatabases()
+  yield models.user.setup()
   yield frontEnd.load() // Loads the template from disk
 
   // Setup request handling -- order is important

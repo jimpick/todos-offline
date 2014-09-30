@@ -4,6 +4,7 @@ var bcrypt = require('bcrypt')
 var thunkify = require('thunkify')
 var genSalt = thunkify(bcrypt.genSalt)
 var hash = thunkify(bcrypt.hash)
+var compare = thunkify(bcrypt.compare)
 var cloudant = require('../lib/cloudant')
 
 function *setup() {
@@ -17,6 +18,7 @@ function *setup() {
 }
 
 function *register(args) {
+  args.email = args.email.toLowerCase().trim()
   console.log('Register', args)
   var user = yield findByEmail(args.email)
   if (user) throw new Error('Email already exists')
@@ -32,6 +34,7 @@ function *register(args) {
 }
 
 function *findByEmail(email) {
+  email = email.toLowerCase().trim()
   var result = yield cloudant.users().find({
     selector: {
       email: email
@@ -46,10 +49,14 @@ function *findById(id) {
 }
 
 function *login(email, password) {
+  email = email.toLowerCase().trim()
   console.log('Login', email, password)
   var user = yield findByEmail(email)
   if (!user) throw new Error('User email not found')
-  // FIXME: Match password
+  var matched = yield compare(password, user.password)
+  if (!matched) {
+    throw new Error('Wrong password')
+  }
   return user
 }
 

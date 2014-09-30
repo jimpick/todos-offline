@@ -32,12 +32,26 @@ function *findByEmail(email) {
       email: email
     }
   })
-  var finalResult = result[0].docs[0]
-  return finalResult
+  return result[0].docs[0]
+}
+
+function *findById(id) {
+  var result = yield cloudant.users().get(id)
+  return result[0]
+}
+
+function *login(email, password) {
+  console.log('Login', email, password)
+  var user = yield findByEmail(email)
+  if (!user) throw new Error('User email not found')
+  // FIXME: Match password
+  return user
 }
 
 module.exports = {
   setup: setup
 , register: register
 , findByEmail: findByEmail
+, findById: findById
+, login: login
 }

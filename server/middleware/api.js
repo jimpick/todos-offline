@@ -23,7 +23,7 @@ api.post('/login', function *login(next) {
 
 api.post('/logout', function *logout(next) {
   this.logout()
-  ctx.body = { success: true }
+  this.body = { success: true }
 })
 
 api.post('/register', function *register(next) {

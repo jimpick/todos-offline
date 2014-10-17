@@ -2,24 +2,26 @@ define([
   "backbone"
 , "text!./templates/home.html"
 , "models/currentUser"
+, "./sync"
+, "./todos"
 ], function(
   Backbone
 , template
 , currentUser
+, SyncView
+, TodosView
 ) {
 
-  var View = Backbone.Marionette.ItemView.extend({
+  var View = Backbone.Marionette.Layout.extend({
 
-    tagName: 'article'
-
-  , attributes: {
-      id: 'main-view'
-    , 'class': 'view contentPanel'
-    }
-
-  , template: _.template(template)
+    template: _.template(template)
 
   , initialize: function() {
+    }
+
+  , regions: {
+      syncRegion: ".syncRegion"
+    , todosRegion: ".todosRegion"
     }
 
   , serializeData: function() {
@@ -29,6 +31,8 @@ define([
     }
 
   , onDomRefresh: function() {
+      this.syncRegion.show(new SyncView({}))
+      this.todosRegion.show(new TodosView({}))
     }
 
   , events: {

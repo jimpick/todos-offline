@@ -18,7 +18,10 @@ function setup() {
   app.use(function *welcome(next) {
     // FIXME Use router and load routes from frontend
     if (
-      this.request.path != '/'
+      this.request.path != '/' &&
+      this.request.path != '/login' &&
+      this.request.path != '/forgot-password' &&
+      this.request.path != '/register'
     ) return yield next
 
     var user = {}

@@ -17,7 +17,7 @@ define([
       return {
         type: 'todo'
       , title: "empty todo..."
-      , order: Todos.nextOrder()
+      , order: todos.nextOrder()
       , done: false
       }
     }

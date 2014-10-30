@@ -2,7 +2,6 @@ define([
   "backbone"
 , "text!./templates/todos.html"
 , "text!./templates/stats.html"
-, "text!./templates/replicationItem.html"
 , "text!./templates/syncStats.html"
 , "models/todos"
 , "./todoItem"
@@ -10,7 +9,6 @@ define([
   Backbone
 , template
 , statsTemplate
-, replicationItemTemplate
 , syncStatsTemplate
 , todos
 , TodoView

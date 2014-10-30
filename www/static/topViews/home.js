@@ -2,13 +2,11 @@ define([
   "backbone"
 , "text!./templates/home.html"
 , "models/currentUser"
-, "./sync"
 , "./todos"
 ], function(
   Backbone
 , template
 , currentUser
-, SyncView
 , TodosView
 ) {
 
@@ -20,8 +18,7 @@ define([
     }
 
   , regions: {
-      syncRegion: ".syncRegion"
-    , todosRegion: ".todosRegion"
+      todosRegion: ".todosRegion"
     }
 
   , serializeData: function() {
@@ -31,7 +28,6 @@ define([
     }
 
   , onDomRefresh: function() {
-      this.syncRegion.show(new SyncView({}))
       this.todosRegion.show(new TodosView({}))
     }
 

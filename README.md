@@ -4,6 +4,9 @@
 Syncs 1Password Agile Keychain files to a local PouchDB inside the
 web-browser, and also syncs to a shared CouchDB hosted on Cloudant.
 
+[![Dependency Status](https://david-dm.org/backblend/1pass-offline.svg)](https://david-dm.org/backblend/1pass-offline)
+[![devDependency Status](https://david-dm.org/backblend/1pass-offline/dev-status.svg)](https://david-dm.org/backblend/1pass-offline#info=devDependencies)
+
 # Deploy this to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)

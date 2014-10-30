@@ -17,7 +17,10 @@ function setup() {
   var compiledTemplate = _.template(template)
   app.use(function *welcome(next) {
     // FIXME Use router and load routes from frontend
-    // if (this.request.path != '/') return yield next
+    if (
+      this.request.path != '/'
+    ) return yield next
+
     var user = {}
     if (this.isAuthenticated()) {
       user.email = this.req.user.email

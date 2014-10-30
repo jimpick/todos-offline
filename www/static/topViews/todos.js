@@ -38,9 +38,6 @@ define([
       , 'addAll'
       )
       this.listenTo(todos, 'add', this.addOne)
-      // todos.bind('add', this.addOne, this)
-      // todos.bind('reset', this.addAll, this)
-      // todos.bind('all', this.render, this)
 
       todos.fetch()
     }
@@ -55,6 +52,10 @@ define([
     // Re-rendering the App just means refreshing the statistics -- the rest
     // of the app doesn't change.
   , onDomRefresh: function() {
+      if (!this.listening) { // Hacky
+        this.listenTo(todos, 'all', this.onDomRefresh)
+        this.listening = true
+      }
       var done = todos.done().length
       var remaining = todos.remaining().length
 

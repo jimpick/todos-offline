@@ -16,7 +16,13 @@ api.post('/login', function *login(next) {
       ctx.body = { success: false }
     } else {
       yield ctx.login(user)
-      ctx.body = { success: true }
+      ctx.body = {
+        success: true
+      , user: {
+          _id: user._id
+        , email: user.email
+        }
+      }
     }
   })
 })
@@ -44,7 +50,13 @@ api.post('/register', function *register(next) {
     throw ex
   }
   this.status = 201
-  this.body = { success: true }
+  this.body = {
+    success: true
+  , user: {
+      _id: user._id
+    , email: user.email
+    }
+  }
 })
 
 app.use(mount('/api/v1', api.middleware()))

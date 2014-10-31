@@ -1,8 +1,13 @@
 define([
   "backbone"
+, "models/setupPouch"
 ], function(
   Backbone
+, setupPouch
 ) {
+
+  // Adjust id attribute to the one PouchDB uses
+  Backbone.Model.prototype.idAttribute = '_id'
 
   var CurrentUser = Backbone.Model.extend({
     initialize: function() {
@@ -11,16 +16,27 @@ define([
   , isLoggedIn: function() {
       return this.get('loggedIn')
     }
+  , setLoggedIn: function(userData) {
+      this.clear()
+      if (userData._id) {
+        this.id = userData._id
+        delete userData._id
+        this.set(userData)
+        this.set('loggedIn', true)
+      } else {
+        this.id = undefined
+        this.set('loggedIn', false)
+      }
+      setupPouch.setup(this)
+    }
   , login: function(email, password, opts) {
       var model = this
       $.post('/api/v1/login', {
         email: email
       , password: password
       })
-      .done(function() {
-        model.clear()
-        model.set('loggedIn', true)
-        model.set('email', email)
+      .done(function(data) {
+        model.setLoggedIn(data.user)
         opts.success()
       })
       .fail(function() {
@@ -39,10 +55,8 @@ define([
         email: email
       , password: password
       })
-      .done(function() {
-        model.clear()
-        model.set('loggedIn', true)
-        model.set('email', email)
+      .done(function(data) {
+        model.setLoggedIn(data.user)
         opts.success()
       })
       .fail(function() {

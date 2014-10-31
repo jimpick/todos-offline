@@ -26,6 +26,7 @@ function setup() {
 
     var user = {}
     if (this.isAuthenticated()) {
+      user._id = this.req.user._id
       user.email = this.req.user.email
     }
     this.type = 'html'

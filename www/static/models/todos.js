@@ -1,9 +1,9 @@
 define([
   "backbone"
-, "./setupPouch"
+, "models/currentUser"
 ], function(
   Backbone
-, setupPouch
+, currentUser
 ) {
 
   // Todo Model

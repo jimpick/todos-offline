@@ -19,7 +19,7 @@ function *setup() {
 
 function *register(args) {
   args.email = args.email.toLowerCase().trim()
-  console.log('Register', args)
+  // console.log('Register', args)
   var user = yield findByEmail(args.email)
   if (user) throw new Error('Email already exists')
   var id = uuid.v4()
@@ -50,7 +50,8 @@ function *findById(id) {
 
 function *login(email, password) {
   email = email.toLowerCase().trim()
-  console.log('Login', email, password)
+  // console.log('Login', email, password)
+  console.log('Login', email)
   var user = yield findByEmail(email)
   if (!user) throw new Error('User email not found')
   var matched = yield compare(password, user.password)

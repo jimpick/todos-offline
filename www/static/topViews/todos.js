@@ -36,7 +36,9 @@ define([
       , 'addAll'
       )
       this.listenTo(todos, 'add', this.addOne)
+      this.listenTo(todos, 'reset', this.addAll)
 
+      todos.reset()
       todos.fetch()
     }
 

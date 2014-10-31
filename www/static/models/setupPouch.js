@@ -8,18 +8,23 @@ define([
 , BackbonePouch
 ) {
 
-  var dbname = 'todos-sync-backbone-0.0.12'
+  function setup(currentUser) {
+    if (!currentUser.isLoggedIn())
+      return
 
-  // Save all of the todo items in the `"todos-backbone"` database.
-  Backbone.sync = BackbonePouch.sync({
-    // We currently suffix by the PouchDB version here
-    // because at the moment PouchDB does not support upgrade
-    db: new PouchDB(dbname)
-  , listen: true
-  , fetch: 'query'
-  });
+    var dbname = 'todos-' + currentUser.id
 
-  // Adjust id attribute to the one PouchDB uses
-  Backbone.Model.prototype.idAttribute = '_id'
+    // Save all of the todo items in the `"todos-backbone"` database.
+    Backbone.sync = BackbonePouch.sync({
+      // We currently suffix by the PouchDB version here
+      // because at the moment PouchDB does not support upgrade
+      db: new PouchDB(dbname)
+    , listen: true
+    , fetch: 'query'
+    })
+  }
 
+  return {
+    setup: setup
+  }
 })

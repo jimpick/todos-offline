@@ -35,8 +35,7 @@ define([
   }
 
   app.addInitializer(function(options) {
-    currentUser.set(globalOpts.user)
-    currentUser.set('loggedIn', globalOpts.isLoggedIn)
+    currentUser.setLoggedIn(globalOpts.user)
     Backbone.history.start({
       pushState: globalOpts.pushState
     , root: root

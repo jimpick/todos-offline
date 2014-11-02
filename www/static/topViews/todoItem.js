@@ -21,13 +21,14 @@ define([
   , initialize: function() {
       _.bindAll(
         this
+      , 'reRender'
       , 'toggleDone'
       , 'edit'
       , 'clear'
       , 'updateOnEnter'
       , 'save'
       )
-      this.listenTo(this.model, 'change', this.onDomRefresh)
+      this.listenTo(this.model, 'change', this.reRender)
       this.listenTo(this.model, 'destroy', this.remove)
     }
 
@@ -46,6 +47,11 @@ define([
       this.$el.toggleClass('conflicts',
         _.size(this.model.get('_conflicts')) > 0)
       this.input = this.$('.edit')
+    }
+
+  , reRender: function() {
+      this.render()
+      this.onDomRefresh()
     }
 
     // Toggle the `"done"` state of the model.

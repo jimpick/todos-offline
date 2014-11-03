@@ -15,6 +15,10 @@ https://todos-offline.herokuapp.com/
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
+# License
+
+Apache
+
 # Development Notes
 
 This project is using Koa and ES6 generators, which will be in the next
@@ -59,10 +63,15 @@ stable version of Node.js.
 * Update marionette, clean up client side
 * Offline / Sync feedback
 * Analytics (Segment.io, Google Analytics, Keen.io)
+* ServiceWorker support
 * Admin interface
 * Client-side dependencies using npm or bower
 * iOS Phonegap app
 * Android Phonegap app
 * Experiment with alternate implementations (Angular/Ionic, Ember, React, Meteor, Rendr, native iOS, native Android)
 * Social features, shared Todo lists
+
+# Credits
+
+Built by [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 

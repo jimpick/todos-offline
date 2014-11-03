@@ -5,7 +5,6 @@ var thunkify = require('thunkify')
 var genSalt = thunkify(bcrypt.genSalt)
 var hash = thunkify(bcrypt.hash)
 var compare = thunkify(bcrypt.compare)
-var cloudant = require('../lib/cloudant')
 
 function *setup() {
   yield cloudant.users().index({
@@ -25,7 +24,8 @@ function *register(args) {
   var id = uuid.v4()
   var salt = yield genSalt(10)
   args.password = yield hash(args.password, salt)
-  insertResult = yield cloudant.users().insert(args, id)
+  var insertResult = yield cloudant.users().insert(args, id)
+  var createDbResult = yield cloudant.createDatabaseForUser(id)
   user = {
     _id: id
   , email: args.email

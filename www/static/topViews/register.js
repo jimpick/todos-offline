@@ -44,9 +44,10 @@ define([
           success: function() {
             app.vent.trigger('go:home')
           }
-        , error: function(error) {
+        , error: function(err) {
             self.$(".signup-form .error")
-              .html("Invalid email or password. Please try again.")
+              // .html("Invalid email or password. Please try again.")
+              .html(err.message)
               .show()
             self.$(".signup-form button").removeAttr("disabled")
           }

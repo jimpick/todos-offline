@@ -29,12 +29,21 @@ function *createDatabases() {
   yield createDatabase(config.cloudant.db + '/users')
 }
 
+function *createDatabaseForUser(userId) {
+  yield createDatabase(config.cloudant.db + '/users/' + userId)
+}
+
 function users() {
   return coCloudant.db.use(config.cloudant.db + '/users')
+}
+
+function user(userId) {
+  return coCloudant.db.use(config.cloudant.db + '/users/' + userId)
 }
 
 module.exports = {
   listDatabases: listDatabases
 , createDatabases: createDatabases
+, createDatabaseForUser: createDatabaseForUser
 , users: users
 }

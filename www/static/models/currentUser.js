@@ -59,8 +59,16 @@ define([
         model.setLoggedIn(data.user)
         opts.success()
       })
-      .fail(function() {
-        opts.error()
+      .fail(function(data) {
+        var err
+        try {
+          err = JSON.parse(data.responseText)
+        } catch(e) {
+          err = {
+            message: 'Unknown error'
+          }
+        }
+        opts.error(err)
       })
     }
   })

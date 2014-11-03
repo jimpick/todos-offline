@@ -18,12 +18,12 @@ stable version of Node.js.
 
 * Install Node.js v0.11.14
 
-    http://nodejs.org/dist/v0.11.13/
+    http://nodejs.org/dist/v0.11.14/
 
 * Ensure the correct version of node is in your PATH
 
     node -v
-    v0.11.13
+    v0.11.14
 
 * Install npm modules
 

@@ -25,8 +25,12 @@ define([
     })
 
     // Replication
-    var remoteUrl = globalOpts.cloudantUrl +
-      encodeURIComponent('/users/' + currentUser.id)
+    var remoteUrl = 'https://' +
+      currentUser.get('apiKey') + ':' +
+      currentUser.get('apiPassword') + '@' +
+      globalOpts.cloudant.account + '.cloudant.com/' +
+      encodeURIComponent(globalOpts.cloudant.db + '/users/' + currentUser.id)
+
     db.replicate.to(remoteUrl, {continuous: true})
     .on('error', function(err) {
       console.log('Replication error (to remote)', err)

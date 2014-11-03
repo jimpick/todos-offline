@@ -29,15 +29,18 @@ function setup() {
     if (this.isAuthenticated()) {
       user._id = this.req.user._id
       user.email = this.req.user.email
+      user.apiKey = this.req.user.apiKey
+      user.apiPassword = this.req.user.apiPassword
     }
     this.type = 'html'
     this.body = compiledTemplate({
       staticBase: '/static'
     , isLoggedIn: this.isAuthenticated()
     , user: user
-    , cloudantUrl: 'https://' + config.cloudant.username + ':' +
-        config.cloudant.password + '@' + config.cloudant.username +
-        '.cloudant.com/' + config.cloudant.db
+    , cloudant: {
+        account: config.cloudant.username
+      , db: config.cloudant.db
+      }
     })
   })
 }

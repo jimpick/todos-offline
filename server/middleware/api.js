@@ -21,6 +21,8 @@ api.post('/login', function *login(next) {
       , user: {
           _id: user._id
         , email: user.email
+        , apiKey: user.apiKey
+        , apiPassword: user.apiPassword
         }
       }
     }
@@ -55,6 +57,8 @@ api.post('/register', function *register(next) {
   , user: {
       _id: user._id
     , email: user.email
+    , apiKey: user.apiKey
+    , apiPassword: user.apiPassword
     }
   }
 })

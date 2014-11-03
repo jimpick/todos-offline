@@ -17,7 +17,7 @@ globalOpts = {
   pushState: true
 , isLoggedIn: <%= isLoggedIn %>
 , user: <%= JSON.stringify(user) %>
-, cloudantUrl: "<%= cloudantUrl %>"
+, cloudant: <%= JSON.stringify(cloudant) %>
 }
 </script>
 <script data-main="<%= staticBase %>/config" src="<%= staticBase %>/vendor/jam/require.js"></script>

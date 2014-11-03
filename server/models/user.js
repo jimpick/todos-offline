@@ -70,7 +70,6 @@ function *login(email, password) {
   if (!matched) {
     throw new Error('Wrong password')
   }
-  var createDbResult = yield cloudant.createDatabaseForUser(user._id)
   return user
 }
 

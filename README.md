@@ -47,4 +47,17 @@ stable version of Node.js.
 
     node --harmony server/server.js
 
+# Roadmap
+
+* Store sessions in redis so they aren't lost on server restart
+* Proxy for Cloudant so API keys don't need to be shared with client
+* Redirect to SSL if not in dev mode
+* Email configuration and password recovery
+* Test framework
+* Offline / Sync feedback
+* Select CSS framework and add styling
+* Client-side dependencies using npm or bower
+* iOS Phonegap app
+* Android Phonegap app
+* Experiment with alternate implementations (Angular/Ionic, Ember, React, Meteor, Rendr, native iOS, native Android)
 

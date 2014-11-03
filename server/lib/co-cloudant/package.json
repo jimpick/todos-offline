@@ -1,0 +1,18 @@
+{
+  "name": "co-cloudant",
+  "version": "0.0.3",
+  "description": "Exposes Cloudant library API as thunks for use with co and koa.",
+  "main": "index.js",
+  "keywords": [
+    "nano",
+    "couchdb",
+    "thunkify",
+    "co",
+    "koa"
+  ],
+  "author": "Jim Pick",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "thunkify": "0.0.1"
+  }
+}

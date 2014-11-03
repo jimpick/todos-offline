@@ -1,0 +1,24 @@
+{
+  "name": "todos-offline",
+  "description": "Sync Todo lists using PouchDB to Cloudant",
+  "keywords": [
+    "small",
+    "sharp",
+    "tool"
+  ],
+  "addons": [],
+  "env": {
+    "CLOUDANT_USERNAME": {
+      "description": "Username",
+      "value": ""
+    },
+    "CLOUDANT_PASSWORD": {
+      "description": "Password",
+      "value": ""
+    },
+    "CLOUDANT_DB": {
+      "description": "Database Name (will be created)",
+      "value": "todos"
+    }
+  }
+}

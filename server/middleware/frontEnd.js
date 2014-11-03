@@ -3,6 +3,7 @@ var path = require('path')
 var _ = require('underscore')
 var thunkify = require('thunkify')
 var read = thunkify(fs.readFile)
+var config = require('../config')
 var app = require('../app')
 var wwwDir = path.join(__dirname, '../../www')
 var template
@@ -34,6 +35,9 @@ function setup() {
       staticBase: '/static'
     , isLoggedIn: this.isAuthenticated()
     , user: user
+    , cloudantUrl: 'https://' + config.cloudant.username + ':' +
+        config.cloudant.password + '@' + config.cloudant.username +
+        '.cloudant.com/' + config.cloudant.db
     })
   })
 }

@@ -50,7 +50,6 @@ function *findById(id) {
 
 function *login(email, password) {
   email = email.toLowerCase().trim()
-  // console.log('Login', email, password)
   console.log('Login', email)
   var user = yield findByEmail(email)
   if (!user) throw new Error('User email not found')
@@ -58,6 +57,7 @@ function *login(email, password) {
   if (!matched) {
     throw new Error('Wrong password')
   }
+  var createDbResult = yield cloudant.createDatabaseForUser(user._id)
   return user
 }
 

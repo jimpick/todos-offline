@@ -1,11 +1,11 @@
-1pass-offline
+todos-offline
 =============
 
-Syncs 1Password Agile Keychain files to a local PouchDB inside the
+Keep Todo lists for multiple users in local PouchDB inside the
 web-browser, and also syncs to a shared CouchDB hosted on Cloudant.
 
-[![Dependency Status](https://david-dm.org/backblend/1pass-offline.svg)](https://david-dm.org/backblend/1pass-offline)
-[![devDependency Status](https://david-dm.org/backblend/1pass-offline/dev-status.svg)](https://david-dm.org/backblend/1pass-offline#info=devDependencies)
+[![Dependency Status](https://david-dm.org/backblend/todos-offline.svg)](https://david-dm.org/backblend/todos-offline)
+[![devDependency Status](https://david-dm.org/backblend/todos-offline/dev-status.svg)](https://david-dm.org/backblend/todos-offline#info=devDependencies)
 
 # Deploy this to Heroku
 
@@ -16,7 +16,7 @@ web-browser, and also syncs to a shared CouchDB hosted on Cloudant.
 This project is using Koa and ES6 generators, which will be in the next
 stable version of Node.js.
 
-* Install Node.js v0.11.13
+* Install Node.js v0.11.14
 
     http://nodejs.org/dist/v0.11.13/
 

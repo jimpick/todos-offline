@@ -1,6 +1,6 @@
 {
-  "name": "1pass-offline",
-  "description": "Sync 1Password files using PouchDB to Cloudant",
+  "name": "todos-offline",
+  "description": "Sync Todo lists using PouchDB to Cloudant",
   "keywords": [
     "small",
     "sharp",
@@ -18,7 +18,7 @@
     },
     "CLOUDANT_DB": {
       "description": "Database Name (will be created)",
-      "value": "onepass"
+      "value": "todos"
     }
   }
 }

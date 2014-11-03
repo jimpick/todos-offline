@@ -57,7 +57,7 @@ function(
     var path = '/' + binding.url(args)
     if (location.pathname != path)
       router.navigate(path)
-    document.title = '1pass-offline'
+    document.title = 'todos-offline'
       + (binding.url(args) == '' ? '' : ': ' + binding.url(args))
     showView(options.view, options.forceRender, args, function(view) {
       if (options.layoutTrigger)

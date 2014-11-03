@@ -29,8 +29,17 @@ function *createDatabases() {
   yield createDatabase(config.cloudant.db + '/users')
 }
 
-function *createDatabaseForUser(userId) {
-  yield createDatabase(config.cloudant.db + '/users/' + userId)
+function *createDatabaseForUser(userId, args) {
+  var dbName = config.cloudant.db + '/users/' + userId
+  yield createDatabase(dbName)
+  yield coCloudant.set_permissions({
+    database: encodeURIComponent(dbName)
+  , username: args.apiKey
+  , roles: [
+      '_reader'
+    , '_writer'
+    ]
+  })
 }
 
 function users() {
@@ -41,9 +50,15 @@ function user(userId) {
   return coCloudant.db.use(config.cloudant.db + '/users/' + userId)
 }
 
+function *generateApiKey() {
+  var genApiKeyResult = yield coCloudant.generate_api_key()
+  return genApiKeyResult[0]
+}
+
 module.exports = {
   listDatabases: listDatabases
 , createDatabases: createDatabases
 , createDatabaseForUser: createDatabaseForUser
+, generateApiKey: generateApiKey
 , users: users
 }

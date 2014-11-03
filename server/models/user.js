@@ -18,17 +18,30 @@ function *setup() {
 
 function *register(args) {
   args.email = args.email.toLowerCase().trim()
-  // console.log('Register', args)
+
+  // Check to see if the user already exists
   var user = yield findByEmail(args.email)
   if (user) throw new Error('Email already exists')
+
+  // Generate an API Key
+  var genApiKeyResult = yield cloudant.generateApiKey()
+
+  // Insert the new user record
   var id = uuid.v4()
   var salt = yield genSalt(10)
   args.password = yield hash(args.password, salt)
-  var insertResult = yield cloudant.users().insert(args, id)
-  var createDbResult = yield cloudant.createDatabaseForUser(id)
+  args.apiKey = genApiKeyResult.key
+  args.apiPassword = genApiKeyResult.password
+  yield cloudant.users().insert(args, id)
+
+  // Create the per-user database
+  yield cloudant.createDatabaseForUser(id, args)
+
   user = {
     _id: id
   , email: args.email
+  , apiKey: args.apiKey
+  , apiPassword: args.apiPassword
   }
   return user
 }

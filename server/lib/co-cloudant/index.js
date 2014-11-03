@@ -58,6 +58,8 @@ module.exports = function(cloudant) {
     request: thunkify(cloudant.request),
     auth: thunkify(cloudant.auth),
     session: thunkify(cloudant.session),
+    generate_api_key: thunkify(cloudant.generate_api_key.bind(cloudant)),
+    set_permissions: thunkify(cloudant.set_permissions.bind(cloudant)),
     config: cloudant.config
   };
 

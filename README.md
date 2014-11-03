@@ -7,6 +7,10 @@ web-browser, and also syncs to a shared CouchDB hosted on Cloudant.
 [![Dependency Status](https://david-dm.org/backblend/todos-offline.svg)](https://david-dm.org/backblend/todos-offline)
 [![devDependency Status](https://david-dm.org/backblend/todos-offline/dev-status.svg)](https://david-dm.org/backblend/todos-offline#info=devDependencies)
 
+# Demo
+
+https://todos-offline.herokuapp.com/
+
 # Deploy this to Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)

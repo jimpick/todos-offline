@@ -49,15 +49,20 @@ stable version of Node.js.
 
 # Roadmap
 
+* Email configuration and password recovery
+* Allow users to change password
 * Store sessions in redis so they aren't lost on server restart
 * Proxy for Cloudant so API keys don't need to be shared with client
 * Redirect to SSL if not in dev mode
-* Email configuration and password recovery
-* Test framework
-* Offline / Sync feedback
 * Select CSS framework and add styling
+* Test framework and code coverage
+* Update marionette, clean up client side
+* Offline / Sync feedback
+* Analytics (Segment.io, Google Analytics, Keen.io)
+* Admin interface
 * Client-side dependencies using npm or bower
 * iOS Phonegap app
 * Android Phonegap app
 * Experiment with alternate implementations (Angular/Ionic, Ember, React, Meteor, Rendr, native iOS, native Android)
+* Social features, shared Todo lists
 

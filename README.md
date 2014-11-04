@@ -17,7 +17,7 @@ https://todos-offline.herokuapp.com/
 
 # License
 
-Apache
+Apache License, Version 2.0
 
 # Development Notes
 
@@ -73,5 +73,5 @@ stable version of Node.js.
 
 # Credits
 
-Built by [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
+Built by
+[Backblend](https://www.backblend.com/) in Vancouver, Canada

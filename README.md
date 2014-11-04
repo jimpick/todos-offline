@@ -58,12 +58,14 @@ stable version of Node.js.
 * Store sessions in redis so they aren't lost on server restart
 * Proxy for Cloudant so API keys don't need to be shared with client
 * Redirect to SSL if not in dev mode
-* Select CSS framework and add styling
+* Select responsive CSS framework and add styling
 * Test framework and code coverage
 * Update marionette, clean up client side
 * Offline / Sync feedback
 * Analytics (Segment.io, Google Analytics, Keen.io)
 * ServiceWorker support
+* Render templates on server side
+* Optimize (concat/minify) assets
 * Admin interface
 * Client-side dependencies using npm or bower
 * iOS Phonegap app

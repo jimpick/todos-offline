@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<title>todos-offline marty</title>
+<link rel="stylesheet" href="<%= staticBase %>/styles/todos.css"/>
+<body>
+<h1>todos-offline (Marty)</h1>
+
+<div id="views" class="wrap blue">
+  <div class="headerRegion"></div>
+  <div class="content"></div>
+  <div class="footerRegion"></div>
+</div>
+<div class="modalContainer modalWrapper"></div>
+<p>
+<a href="/">Switch to Backbone version</a>
+</p>
+<footer>Built by <a href="https://www.backblend.com/">Backblend</a> in Vancouver, Canada</footer>
+<script>
+globalOpts = {
+  isLoggedIn: <%= isLoggedIn %>
+, user: <%= JSON.stringify(user) %>
+, cloudant: <%= JSON.stringify(cloudant) %>
+}
+</script>
+</body>
+</html>

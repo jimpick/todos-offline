@@ -7,23 +7,17 @@ var config = require('../config')
 var app = require('../app')
 var wwwDir = path.join(__dirname, '../../www')
 var template
+var templateMarty
 
 // Read template from disk into memory
 function *load() {
   template = yield read(path.join(wwwDir, 'index.html'), 'utf8')
+  templateMarty = yield read(path.join(wwwDir, 'marty.html'), 'utf8')
 }
 
-// Call this after load has finished
-function setup() {
-  var compiledTemplate = _.template(template)
-  app.use(function *welcome(next) {
-    // FIXME Use router and load routes from frontend
-    if (
-      this.request.path != '/' &&
-      this.request.path != '/login' &&
-      this.request.path != '/forgot-password' &&
-      this.request.path != '/register'
-    ) return yield next
+function pageGenerator (compiledTemplate) {
+  return function *welcome(next) {
+    console.log('path', this.request.path)
 
     var user = {}
     if (this.isAuthenticated()) {
@@ -42,7 +36,17 @@ function setup() {
       , db: config.cloudant.db
       }
     })
-  })
+  }
+}
+
+// Call this after load has finished
+function setup() {
+  app.get('/', pageGenerator(_.template(template)))
+  app.get('/login', pageGenerator(_.template(template)))
+  app.get('/forgot-password', pageGenerator(_.template(template)))
+  app.get('/register', pageGenerator(_.template(template)))
+
+  app.get('/marty', pageGenerator(_.template(templateMarty)))
 }
 
 module.exports = {

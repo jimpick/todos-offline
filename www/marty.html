@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
 <title>todos-offline marty</title>
-<link rel="stylesheet" href="<%= staticBase %>/styles/todos.css"/>
+<!-- <link rel="stylesheet" href="<%= staticBase %>/styles/todos.css"/> -->
+<link rel="stylesheet" href="<%= staticBase %>/marty/todomvc-common/base.css">
 <body>
 <h1>todos-offline (Marty)</h1>
 
-<div id="views" class="wrap blue">
-  <div class="headerRegion"></div>
-  <div class="content"></div>
-  <div class="footerRegion"></div>
-</div>
-<div class="modalContainer modalWrapper"></div>
+<section id="todoapp"></section>
+<footer id="info">
+  <p>Double-click to edit a todo</p>
+  <p>
+    Created by <a href="http://facebook.com/bill.fisher.771">Bill Fisher</a>
+  </p>
+  <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
+</footer>
+<script src="<%= staticBase %>/marty/dist/todomvc.js"></script>
+
 <p>
 <a href="/">Switch to Backbone version</a>
 </p>

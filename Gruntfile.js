@@ -1,12 +1,22 @@
 var _ = require('underscore')
-  , config = require('./config')
+var config = require('./config')
 
 module.exports = function (grunt) {
+  require('load-grunt-tasks')(grunt)
 
   grunt.initConfig({
-
     pkg: grunt.file.readJSON('package.json')
-
+  , browserify: {
+      dist: {
+        src: 'www/static/marty/app/**/*.js'
+      , dest: 'www/static/marty/dist/todomvc.js'
+      , options: {
+          transform: [
+            'babelify'  
+          ]
+        }
+      }
+    }
   })
 
   if (config.devMode) {

@@ -3,7 +3,7 @@ var co = require('co')
 var app = require('./app')
 var models = require('./models')
 
-co(function *initialize() {
+co(function *initialize () {
   var frontEnd = require('./middleware/frontEnd')
   var cloudant = require('./lib/cloudant')
 
@@ -23,5 +23,7 @@ co(function *initialize() {
   var port = process.env.PORT || 4126
   server.listen(port)
   console.log('Listening on port ' + port)
-})()
+}).catch(function (err) {
+  console.error(err.stack)
+})
 

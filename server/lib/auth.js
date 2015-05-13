@@ -15,7 +15,10 @@ passport.deserializeUser(function(id, done) {
       console.log('User lookup error', ex)
       return done(null, false)
     }
-  })()
+  }).catch(function (err) {
+    console.log('Unknown deserialize error', err)
+    return done(err)
+  })
 })
 
 var LocalStrategy = require('passport-local').Strategy
@@ -33,7 +36,10 @@ passport.use(new LocalStrategy(
         console.log('Login error', ex)
         return done(null, false)
       }
-    })()
+    }).catch(function (err) {
+      console.log('Unknown login error', err)
+      return done(err)
+    })
   }
 ))
 

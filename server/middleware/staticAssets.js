@@ -1,10 +1,9 @@
 var path = require('path')
-var staticCache = require('koa-static-cache')
 var app = require('../app')
-var staticDir = path.join(__dirname, '../../www/static')
+var mount = require('koa-mount')
+var staticServer = require('koa-static')
 
-app.use(staticCache(staticDir, {
-  prefix: '/static/'
-, maxAge: 365 * 24 * 60 * 60
-}))
+app.use(mount('/static', staticServer(
+  path.join(__dirname, '../../www/static')
+)))
 

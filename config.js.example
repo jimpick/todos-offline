@@ -3,6 +3,7 @@
 module.exports = {
   devMode: true
 , canonicalUrl: 'localhost:4126'
+, redis: 'redis://127.0.0.1:6379'
 , cloudant: {
     username: ''
   , password: ''

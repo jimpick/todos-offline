@@ -6,7 +6,9 @@
     "sharp",
     "tool"
   ],
-  "addons": [],
+  "addons": [
+    "openredis"
+  ],
   "env": {
     "CLOUDANT_USERNAME": {
       "description": "Username",

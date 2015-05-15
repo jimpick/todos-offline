@@ -13,6 +13,8 @@ co(function *initialize () {
   yield frontEnd.load() // Loads the template from disk
 
   // Setup request handling -- order is important
+  require('./middleware/bodyParser')
+  require('./middleware/session')
   require('./middleware/staticAssets') // Static Assets
   require('./middleware/passport') // Passport Authentication
   require('./middleware/router')

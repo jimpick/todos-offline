@@ -12,7 +12,7 @@ require.config({
       "lib/amd/backbone.babysitter"
   , "backbone.wreqr": "vendor/jam/Backbone.Wreqr/" +
       "lib/amd/backbone.wreqr"
-  , "pouchdb": "vendor/pouchdb-2.2.3.min"
+  , "pouchdb": "vendor/pouchdb-3.4.0.min"
   , "backbone-pouch": "vendor/backbone-pouch"
   }
 

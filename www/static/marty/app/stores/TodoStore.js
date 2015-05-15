@@ -12,6 +12,7 @@
 var _ = require('lodash');
 var Marty = require('marty');
 var TodoConstants = require('../constants/TodoConstants');
+var pouch = require('../pouch/PouchDb');
 
 var TodoStore = Marty.createStore({
   id: 'TodoStore',

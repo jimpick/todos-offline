@@ -31,6 +31,6 @@ module.exports = function (grunt) {
       }
     )
 
-    grunt.registerTask('default', ['nodeServer'])
+    grunt.registerTask('default', ['browserify', 'nodeServer'])
   }
 }

@@ -1,36 +1,41 @@
-var _ = require('underscore')
-var config = require('./config')
-
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt)
 
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json')
+    nodemon: {
+      serve: {
+        script: './server/server'
+      , options: {
+          watch: [
+            'server'
+          ]
+        }
+      }
+    }
+  , concurrent: {
+      serve: {
+        tasks: ['browserify:watch', 'nodemon:serve']
+      , options: {
+          logConcurrentOutput: true
+        }
+      }
+    }
   , browserify: {
-      dist: {
+      watch: {
         src: 'www/static/marty/app/**/*.js'
       , dest: 'www/static/marty/dist/todomvc.js'
       , options: {
-          transform: [
-            'babelify'  
-          ]
+          watch: true
+        , keepAlive: true
+        , transform: ['babelify']
+        , browserifyOptions: {
+            debug: true
+          }
         }
       }
     }
   })
 
-  if (config.devMode) {
+  grunt.registerTask('default', 'concurrent:serve')
 
-    grunt.registerTask('nodeServer',
-      function() {
-        var done = this.async()
-
-        _.extend(process.env, grunt.config.get('pkg.herokuDevSettings'))
-        require('./server/server')
-        // Never call done()
-      }
-    )
-
-    grunt.registerTask('default', ['browserify', 'nodeServer'])
-  }
 }

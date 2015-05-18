@@ -12,7 +12,6 @@
 var Marty = require('marty');
 var TodoConstants = require('../constants/TodoConstants');
 
-
 var TodoActions = Marty.createActionCreators({
   id: 'TodoActions',
 
@@ -63,7 +62,28 @@ var TodoActions = Marty.createActionCreators({
    */
   destroyCompleted: function() {
     this.dispatch(TodoConstants.TODO_DESTROY_COMPLETED);
+  },
+
+  /**
+   * Todo was updated or inserted in PouchDb
+   *
+   * @param  {string} id
+   */
+  updatedOrInserted: function(doc) {
+    this.dispatch(TodoConstants.TODO_UPDATED_OR_INSERTED, doc);
+  },
+
+  /**
+   * Todo was deleted in PouchDb
+   *
+   * @param  {string} id
+   */
+  deleted: function(id) {
+    this.dispatch(TodoConstants.TODO_DESTROY, id, {
+      noSave: true
+    });
   }
+
 });
 
 module.exports = TodoActions;

@@ -23,7 +23,8 @@ var TodoStore = Marty.createStore({
     completeTodo: TodoConstants.TODO_COMPLETE,
     updateText: TodoConstants.TODO_UPDATE_TEXT,
     destroyTodo: TodoConstants.TODO_DESTROY,
-    destroyCompleted: TodoConstants.TODO_DESTROY_COMPLETED
+    destroyCompleted: TodoConstants.TODO_DESTROY_COMPLETED,
+    updatedOrInserted: TodoConstants.TODO_UPDATED_OR_INSERTED
   },
 
   getInitialState: function () {
@@ -124,7 +125,21 @@ var TodoStore = Marty.createStore({
     }
 
     return true;
-  }
+  },
+
+  /**
+   * Update or insert a TODO item from a pouchdb doc
+   * @param {object} doc The PouchDb doc representing the item
+   */
+  updatedOrInserted: function (doc) {
+    this.state[doc._id] = {
+      id: doc._id,
+      complete: doc.done,
+      text: doc.title
+    };
+    this.hasChanged();
+  },
+
 });
 
 module.exports = TodoStore;

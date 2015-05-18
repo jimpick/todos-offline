@@ -1,6 +1,6 @@
 var Marty = require('marty');
 var PouchDbStateSource = require('./pouchDbStateSource');
-// var PouchActionCreators = require('../actions/pouchActionCreators');
+var TodoActions = require('../actions/TodoActions');
 
 var PouchDbSync = Marty.createStateSource({
   id: 'PouchDbSync',
@@ -10,12 +10,10 @@ var PouchDbSync = Marty.createStateSource({
     'deleted': 'onDeleted'
   },
   onUpdatedOrInserted: function (doc) {
-    console.log('Jim onUpdatedOrInserted', doc)
-    // pouchActionCreators.updatedOrInserted(doc);
+    TodoActions.updatedOrInserted(doc);
   },
   onDeleted: function (id) {
-    console.log('Jim onDeleted', id)
-    // pouchActionCreators.deleted(id);
+    TodoActions.deleted(id);
   }
 });
 

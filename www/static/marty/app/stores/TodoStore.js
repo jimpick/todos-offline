@@ -75,8 +75,17 @@ var TodoStore = Marty.createStore({
         id: id,
         complete: false,
         text: text
-      };
-      this.hasChanged();
+      }
+      var self = this
+      pouch.db.put({
+        _id: id,
+        title: text,
+        done: false,
+        type: 'todo',
+        order: _.size(self.state) // FIXME: Unreliable
+      }).then(function () {
+        self.hasChanged()
+      })
     }
   },
   toggleComplete: function () {

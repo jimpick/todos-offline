@@ -113,8 +113,25 @@ var TodoStore = Marty.createStore({
    *     updated.
    */
   update: function (id, props) {
+    var self = this
     this.state[id] = _.extend({}, this.state[id], props);
-    this.hasChanged();
+    pouch.db.get(id)
+    .then(function (doc) {
+      return pouch.db.put({
+        _id: id,
+        _rev: doc._rev,
+        title: self.state[id].text,
+        done: self.state[id].complete,
+        type: 'todo',
+        order: doc.order
+      })
+    })
+    .then(function (result) {
+      self.hasChanged()
+    })
+    .catch(function (err) {
+      console.log('Pouch update rrror', err)
+    })
   },
 
   /**
@@ -134,9 +151,23 @@ var TodoStore = Marty.createStore({
    * Delete a TODO item.
    * @param  {string} id
    */
-  destroyTodo: function (id) {
+  destroyTodo: function (id, options) {
+    var self = this
     delete this.state[id];
-    this.hasChanged();
+    if (options && options.noSave) {
+      this.hasChanged()
+      return
+    }
+    pouch.db.get(id)
+    .then(function (doc) {
+      pouch.db.remove(doc)
+    })
+    .then(function () {
+      self.hasChanged()
+    })
+    .catch(function (err) {
+      console.log('Error destroying pouch doc', err)
+    })
   },
 
   /**

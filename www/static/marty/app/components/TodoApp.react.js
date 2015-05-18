@@ -38,10 +38,10 @@ module.exports = Marty.createContainer(TodoApp, {
   listenTo: TodoStore,
   fetch: {
     allTodos() {
-      return TodoStore.getState()
+      return TodoStore.for(this).getAll()
     },
     areAllComplete() {
-      return TodoStore.areAllComplete()
+      return TodoStore.areAllComplete() // FIXME?
     }
   }
 });

@@ -31,6 +31,34 @@ var TodoStore = Marty.createStore({
     return {};
   },
 
+  getAll: function () {
+    return this.fetch({
+      id: 'all-todos',
+      locally: function () {
+        if (this.hasAlreadyFetched('all-todos')) {
+          return this.state;
+        }
+      },
+      remotely: function () {
+        var state = this.state
+        return pouch.db.allDocs({include_docs: true})
+        .then(function (res) {
+          var results = {}
+          if (res && res.rows) {
+            res.rows.forEach(function (row) {
+              results[row.id] = {
+                id: row.id,
+                complete: row.doc.done,
+                text: row.doc.title
+              }
+            })
+          }
+          _.extend(state, results)
+        })
+      }
+    });
+  },
+
   /**
    * Create a TODO item.
    * @param  {string} text The content of the TODO

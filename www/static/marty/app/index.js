@@ -8,10 +8,16 @@
  */
 
 var React = require('react');
+var Marty = require('marty');
 
 var TodoApp = require('./components/TodoApp.react');
 
-window.Marty = require('marty');
+window.React = React // For React Developer Tools
+window.Marty = Marty // For Marty Developer Tools
+
+if (Marty.isBrowser) {
+  require('./sources/pouchDbSync').open()
+}
 
 React.render(
   <TodoApp />,

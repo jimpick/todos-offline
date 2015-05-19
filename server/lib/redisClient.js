@@ -18,6 +18,10 @@ if (process.env.REDISCLOUD_URL) {
   redisUrl = process.env.REDISCLOUD_URL
 }
 
+if (process.env.REDIS_URL) {
+  redisUrl = process.env.REDIS_URL
+}
+
 if (! redisUrl) {
   log.error('Redis not configured')
   process.exit(1)

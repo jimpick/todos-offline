@@ -7,7 +7,7 @@
     "tool"
   ],
   "addons": [
-    "openredis"
+    "heroku-redis"
   ],
   "env": {
     "CLOUDANT_USERNAME": {

@@ -5,7 +5,7 @@ module.exports = function (grunt) {
   grunt.registerTask('release', [
     'browserify:release'
   , 'exorcise'
-  // , 'uglify:release'
+  , 'uglify:release'
   ])
 
   grunt.initConfig({
@@ -54,8 +54,22 @@ module.exports = function (grunt) {
   , exorcise: {
       bundle: {
         files: {
-          './www/static/marty/dist/todomvc-dist.map': [
-            './www/static/marty/dist/todomvc-dist.js'
+          'www/static/marty/dist/todomvc-dist.map': [
+            'www/static/marty/dist/todomvc-dist.js'
+          ]
+        }
+      }
+    }
+  , uglify: {
+      release: {
+        options: {
+          sourceMap: true
+        , sourceMapIncludeSources: true
+        , sourceMapIn: 'www/static/marty/dist/todomvc-dist.map'
+        },
+        files: {
+          'www/static/marty/dist/todomvc-dist.min.js': [
+            'www/static/marty/dist/todomvc-dist.js'
           ]
         }
       }

@@ -26,6 +26,10 @@ globalOpts = {
 , cloudant: <%= JSON.stringify(cloudant) %>
 }
 </script>
+<% if (config.devMode) { %>
 <script src="<%= staticBase %>/marty/dist/todomvc.js"></script>
+<% } else { %>
+<script src="<%= staticBase %>/marty/dist/todomvc-dist.min.js"></script>
+<% } %>
 </body>
 </html>

@@ -10,6 +10,12 @@ var dbName = 'todos-' + window.globalOpts.user._id
 var db = new PouchDB(dbName)
 
 // Replication
+//  - store in object so we can cancel them
+var replications = {
+  to: null
+, from: null
+}
+
 var remoteUrl = 'https://' +
   window.globalOpts.user.apiKey + ':' +
   window.globalOpts.user.apiPassword + '@' +
@@ -17,11 +23,24 @@ var remoteUrl = 'https://' +
   encodeURIComponent(window.globalOpts.cloudant.db + '/users/' +
                      window.globalOpts.user._id)
 
-db.replicate.to(remoteUrl, {continuous: true})
+function backOff (delay) {
+  return 1000
+}
+
+replications.to = db.replicate.to(remoteUrl, {
+  live: true
+, retry: true
+, back_off_function: backOff
+})
 .on('error', function(err) {
   console.log('Replication error (to remote)', err)
 })
-db.replicate.from(remoteUrl, {continuous: true})
+
+replications.from = db.replicate.from(remoteUrl, {
+  live: true
+, retry: true
+, back_off_function: backOff
+})
 .on('error', function(err) {
   console.log('Replication error (from remote)', err)
 })
@@ -32,5 +51,6 @@ db.replicate.from(remoteUrl, {continuous: true})
 
 module.exports = {
   db: db
+, replications: replications
 }
 

@@ -1,6 +1,13 @@
 module.exports = function (grunt) {
   require('load-grunt-tasks')(grunt)
 
+  grunt.registerTask('default', 'concurrent:serve')
+  grunt.registerTask('release', [
+    'browserify:release'
+  , 'exorcise'
+  // , 'uglify:release'
+  ])
+
   grunt.initConfig({
     nodemon: {
       serve: {
@@ -33,9 +40,26 @@ module.exports = function (grunt) {
           }
         }
       }
+    , release: {
+        src: 'www/static/marty/app/**/*.js'
+      , dest: 'www/static/marty/dist/todomvc-dist.js'
+      , options: {
+          transform: ['babelify']
+        , browserifyOptions: {
+            debug: true
+          }
+        }
+      }
+    }
+  , exorcise: {
+      bundle: {
+        files: {
+          './www/static/marty/dist/todomvc-dist.map': [
+            './www/static/marty/dist/todomvc-dist.js'
+          ]
+        }
+      }
     }
   })
-
-  grunt.registerTask('default', 'concurrent:serve')
 
 }

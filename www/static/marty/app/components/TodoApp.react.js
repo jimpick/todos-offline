@@ -3,7 +3,7 @@ var Marty = require('marty')
 var Router = require('react-router')
 var RouteHandler = Router.RouteHandler
 var Header = require('./Header.react')
-// var TodoStore = require('../stores/TodoStore')
+var LoginStore = require('../stores/LoginStore')
 
 var TodoApp = React.createClass({
   render: function() {
@@ -18,9 +18,9 @@ var TodoApp = React.createClass({
 
 module.exports = TodoApp
 
-//module.exports = Marty.createContainer(Home, {
-  /* listenTo: TodoStore,
-  fetch: {
+module.exports = Marty.createContainer(TodoApp, {
+  listenTo: LoginStore
+/* , fetch: {
     allTodos() {
       return TodoStore.for(this).getAll()
     },
@@ -28,5 +28,5 @@ module.exports = TodoApp
       return TodoStore.areAllComplete() // FIXME?
     }
   } */
-// })
+})
 

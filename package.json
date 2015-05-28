@@ -53,6 +53,7 @@
     "passport-local": "^1.0.0",
     "pouchdb": "^3.5.0",
     "react": "^0.13.3",
+    "react-router": "^0.13.3",
     "redis": "^0.12.1",
     "thunkify": "^2.1.2",
     "underscore": "^1.8.3",

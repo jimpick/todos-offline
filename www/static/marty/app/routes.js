@@ -1,12 +1,11 @@
-var React = require('react');
-var Router = require('react-router');
-var Route = Router.Route;
+var React = require('react')
+var Router = require('react-router')
+var Route = Router.Route
+var TodoApp = require('./components/TodoApp.react')
+var Home = require('./components/Home.react')
 
 module.exports = [
-  /* <Route name="room"
-         path="/rooms/:id"
-         handler={require('./components/room')} />, */
-  <Route name="home"
-         path="/marty"
-         handler={require('./components/TodoApp.react')} />
-];
+  <Route handler={TodoApp}>
+    <Route name="home" path="/marty" handler={Home} />
+  </Route>
+]

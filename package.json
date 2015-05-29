@@ -48,7 +48,7 @@
     "koa-static": "^1.4.9",
     "load-grunt-tasks": "^3.2.0",
     "lodash": "^3.9.3",
-    "marty": "^0.9.13",
+    "marty": "^0.10.1",
     "node-uuid": "^1.4.3",
     "passport-local": "^1.0.0",
     "pouchdb": "^3.5.0",

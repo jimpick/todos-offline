@@ -1,24 +1,23 @@
-/**
- * Copyright (c) 2014, Facebook, Inc.
- * All rights reserved.
- *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- */
-
-var React = require('react');
-var Marty = require('marty');
-var Router = require('./router');
+var React = require('react')
+var Marty = require('marty')
+var Application = require('./application')
+var ApplicationContainer = Marty.ApplicationContainer
 
 window.React = React // For React Developer Tools
 window.Marty = Marty // For Marty Developer Tools
 
+var app = new Application()
+
 if (Marty.isBrowser) {
-  require('./sources/pouchDbSync').open()
+  app.pouchDbSync.open()
 }
 
-Router.run(function (Handler, state) {
-  React.render(<Handler {...state.params} />, document.getElementById('todoapp'));
-});
+app.router.run(function (Handler, state) {
+  React.render(
+    <ApplicationContainer app={app}>
+      <Handler {...state.params} />
+    </ApplicationContainer>
+  , document.getElementById('todoapp')
+  )
+})
 

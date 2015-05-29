@@ -17,9 +17,9 @@ co(function *initialize () {
   require('./middleware/session')
   require('./middleware/staticAssets') // Static Assets
   require('./middleware/passport') // Passport Authentication
-  require('./middleware/router')
   require('./middleware/api') // API
   frontEnd.setup() // Template renderer
+  require('./middleware/routes')
 
   // Start listening
   var server = http.createServer(app.callback())

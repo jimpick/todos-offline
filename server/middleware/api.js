@@ -2,6 +2,7 @@ var Router = require('koa-router')
 var mount = require('koa-mount')
 var passport = require('koa-passport')
 var app = require('../app')
+var router = require('../lib/router')
 var models = require('../models')
 
 var api = new Router()
@@ -63,5 +64,6 @@ api.post('/register', function *register(next) {
   }
 })
 
-app.use(mount('/api/v1', api.middleware()))
+router.post('/api/v1', api.routes())
+
 

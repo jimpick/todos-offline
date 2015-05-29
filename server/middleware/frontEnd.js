@@ -4,6 +4,7 @@ var _ = require('underscore')
 var thunkify = require('thunkify')
 var read = thunkify(fs.readFile)
 var config = require('../config')
+var router = require('../lib/router')
 var app = require('../app')
 var wwwDir = path.join(__dirname, '../../www')
 var template
@@ -41,12 +42,12 @@ function pageGenerator (compiledTemplate) {
 
 // Call this after load has finished
 function setup() {
-  app.get('/', pageGenerator(_.template(template)))
-  app.get('/login', pageGenerator(_.template(template)))
-  app.get('/forgot-password', pageGenerator(_.template(template)))
-  app.get('/register', pageGenerator(_.template(template)))
+  router.get('/', pageGenerator(_.template(template)))
+  router.get('/login', pageGenerator(_.template(template)))
+  router.get('/forgot-password', pageGenerator(_.template(template)))
+  router.get('/register', pageGenerator(_.template(template)))
 
-  app.get('/marty', pageGenerator(_.template(templateMarty)))
+  router.get('/marty', pageGenerator(_.template(templateMarty)))
 }
 
 module.exports = {

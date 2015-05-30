@@ -21,3 +21,5 @@ app.router.run(function (Handler, state) {
   )
 })
 
+app.router.transitionTo('login')
+

@@ -1,5 +1,6 @@
 var React = require('react')
 var Marty = require('marty')
+var Header = require('./header')
 var Footer = require('./footer')
 var MainSection = require('./mainSection')
 
@@ -7,6 +8,7 @@ var Home = React.createClass({
   render: function() {
     return (
       <div>
+        <Header />
         <MainSection
           allTodos={this.props.allTodos}
           areAllComplete={this.props.areAllComplete}

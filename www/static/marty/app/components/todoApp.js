@@ -2,13 +2,11 @@ var React = require('react')
 var Marty = require('marty')
 var Router = require('react-router')
 var RouteHandler = Router.RouteHandler
-var Header = require('./header')
 
 var TodoApp = React.createClass({
   render: function() {
     return (
       <div>
-        <Header />
         <RouteHandler/>
       </div>
     )

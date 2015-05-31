@@ -4,8 +4,8 @@ var LoginConstants = require('../constants/LoginConstants')
 var LoginActions = Marty.createActionCreators({
   id: 'LoginActions'
 
-, login: function (jwt) {
-    this.dispatch(LoginConstants.LOGIN, jwt)
+, login: function (email, password) {
+    this.dispatch(LoginConstants.LOGIN, email, password)
   }
 
 , logout: function () {

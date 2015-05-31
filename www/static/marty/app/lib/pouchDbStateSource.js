@@ -4,6 +4,9 @@ function pouchDbStateSource() {
   return {
     open: function () {
       var stateSource = this
+      if (!pouch.db) {
+        return
+      }
       pouch.db.changes({
         live: true
       , since: 'now'

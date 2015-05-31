@@ -48,6 +48,8 @@ function setup() {
   router.get('/register', pageGenerator(_.template(template)))
 
   router.get('/marty', pageGenerator(_.template(templateMarty)))
+  router.get('/marty/login', pageGenerator(_.template(templateMarty)))
+  router.get('/marty/signup', pageGenerator(_.template(templateMarty)))
 }
 
 module.exports = {

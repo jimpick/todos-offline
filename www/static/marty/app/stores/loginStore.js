@@ -12,15 +12,24 @@ var LoginStore = Marty.createStore({
   }
 
 , getInitialState: function () {
-    return {};
+    return {
+      loggedIn: false
+    }
   }
 
-, login: function () {
-    console.log('Jim login')
+, login: function (email, password) {
+    console.log('Jim login', email, password)
+    this.setState({
+      loggedIn: true
+    })
   }
 
 , logout: function () {
     console.log('Jim logout')
+  }
+
+, getLoggedIn: function () {
+    return this.state.loggedIn
   }
 
 })

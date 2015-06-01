@@ -49,6 +49,8 @@ if (window.globalOpts &&
 
 } else {
   // location.href = '/'
+  var dbName = 'todos-anonymous' // FIXME
+  var db = new PouchDB(dbName)
 }
 
 module.exports = {

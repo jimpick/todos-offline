@@ -1,25 +1,26 @@
 var React = require('react')
 var Marty = require('marty')
-var Application = require('./application')
 var ApplicationContainer = Marty.ApplicationContainer
+var Application = require('./application')
+var instances = require('./instances')
+
+var app = new Application()
+
+instances.app = app
 
 window.React = React // For React Developer Tools
 window.Marty = Marty // For Marty Developer Tools
-
-var app = new Application()
 
 if (Marty.isBrowser) {
   app.pouchDbSync.open()
 }
 
-app.router.run(function (Handler, state) {
+app.router.run(function (Root, state) {
   React.render(
     <ApplicationContainer app={app}>
-      <Handler {...state.params} />
+      <Root {...state.params} />
     </ApplicationContainer>
   , document.getElementById('todoapp')
   )
 })
-
-app.router.transitionTo('login')
 

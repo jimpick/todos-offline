@@ -1,5 +1,7 @@
 var React = require('react/addons')
 var Marty = require('marty')
+var Router = require('react-router')
+var Link = Router.Link
 
 var Login = React.createClass({
 
@@ -10,6 +12,12 @@ var Login = React.createClass({
       email: ''
     , password: ''
     }
+  }
+
+, componentWillMount: function () {
+    this.app.loginStore.addChangeListener((state, store) => {
+      this.app.router.transitionTo('home')
+    })
   }
 
 , login: function(e) {
@@ -48,6 +56,7 @@ var Login = React.createClass({
             Submit
           </button>
         </div>
+        <Link to="home">Home</Link>
       </div>
     )
   }

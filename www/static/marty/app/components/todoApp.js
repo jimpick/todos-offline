@@ -1,10 +1,22 @@
 var React = require('react')
-var Marty = require('marty')
 var Router = require('react-router')
 var RouteHandler = Router.RouteHandler
+var instances = require('../instances')
 
 var TodoApp = React.createClass({
-  render: function() {
+
+  statics: {
+    willTransitionTo: function (transition) {
+      if (
+        !transition.path.match(/^\/marty\/login/) &&
+        !instances.app.loginStore.getLoggedIn()
+      ) {
+        transition.redirect('login', {}, {'nextPath' : transition.path});
+      }
+    }
+  }
+
+, render: function() {
     return (
       <div>
         <RouteHandler/>
@@ -14,16 +26,4 @@ var TodoApp = React.createClass({
 })
 
 module.exports = TodoApp
-
-module.exports = Marty.createContainer(TodoApp, {
-  listenTo: 'loginStore'
-/* , fetch: {
-    allTodos() {
-      return TodoStore.for(this).getAll()
-    },
-    areAllComplete() {
-      return TodoStore.areAllComplete() // FIXME?
-    }
-  } */
-})
 

@@ -1,3 +1,5 @@
 node_modules*
 /config.js
 .*.swp
+www/static/marty/dist/todomvc-webpack.js
+www/static/marty/dist/todomvc-webpack.js.map

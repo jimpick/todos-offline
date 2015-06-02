@@ -21,10 +21,33 @@ module.exports = function (grunt) {
     }
   , concurrent: {
       serve: {
-        tasks: ['browserify:watch', 'nodemon:serve']
+        // tasks: ['browserify:watch', 'nodemon:serve']
+        tasks: ['webpack:watch', 'nodemon:serve']
       , options: {
           logConcurrentOutput: true
         }
+      }
+    }
+  , webpack: {
+      watch: {
+        entry: './www/static/marty/app/index.js'
+      , output: {
+          path: __dirname + '/www/static/marty/dist'
+        , filename: 'todomvc-webpack.js'
+        }
+      , module: {
+          loaders: [
+            {
+              test: /\.js$/
+            , exclude: /(node_modules|bower_components|vendor)/
+            , loader: 'babel'
+            }
+          ]
+        , noParse: /\/levelup\//
+        }
+      , devtool: '#source-map'
+      , watch: true
+      , keepalive: true
       }
     }
   , browserify: {

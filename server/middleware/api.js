@@ -64,6 +64,8 @@ api.post('/register', function *register(next) {
   }
 })
 
-router.post('/api/v1', api.routes())
+var apiWrapper = new Router()
+apiWrapper.use('/api/v1', api.routes())
+app.use(apiWrapper.routes())
 
 

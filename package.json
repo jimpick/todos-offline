@@ -39,7 +39,7 @@
     }
   },
   "dependencies": {
-    "bcrypt": "^0.8.3",
+    "bcrypt": "^0.8.4",
     "classnames": "^2.1.2",
     "cloudant": "^1.0.0",
     "co": "^4.5.4",
@@ -54,7 +54,7 @@
     "koa-static": "^1.4.9",
     "load-grunt-tasks": "^3.2.0",
     "lodash": "^3.9.3",
-    "marty": "^0.10.1",
+    "marty": "0.10.1",
     "node-uuid": "^1.4.3",
     "passport-local": "^1.0.0",
     "pouchdb": "^3.6.0",
